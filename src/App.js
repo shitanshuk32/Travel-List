@@ -1,17 +1,22 @@
 import { useState } from "react";
 
-const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: false },
-  { id: 2, description: "Socks", quantity: 12, packed: false },
-  { id: 3, description: "Charger", quantity: 1, packed: false },
-];
-
 export default function App() {
+  const [items, setItems] = useState([]);
+
+  function handleAddItems(item) {
+    setItems((items) => [...items, item]);
+  }
+
+  function handleDeleteItems(id) {
+    console.log(id);
+    setItems((items) => items.filter((item) => item.id !== id));
+  }
+
   return (
     <div className="app">
       <Logo />
-      <Form />
-      <PackingList />
+      <Form addItems={handleAddItems} />
+      <PackingList items={items} deleteItems={handleDeleteItems} />
       <Stats />
     </div>
   );
@@ -21,17 +26,31 @@ function Logo() {
   return <h1>🏝️ Far Away 🧳</h1>;
 }
 
-function Form() {
+function Form({ addItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState("1");
 
-  function handleClick(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log(e);
+
+    if (!description) return;
+
+    const newItems = {
+      description,
+      quantity,
+      packedItems: false,
+      id: Date.now(),
+    };
+    console.log(newItems);
+
+    addItems(newItems);
+
+    setDescription("");
+    setQuantity(1);
   }
 
   return (
-    <form className="add-form" onChange={handleClick}>
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What do you need for your 😍 trip?</h3>
       <select
         id="userSelection"
@@ -56,25 +75,25 @@ function Form() {
   );
 }
 
-function PackingList() {
+function PackingList({ items, deleteItems }) {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (
-          <Item item={item} key={item.id} />
+        {items.map((item) => (
+          <Item item={item} deleteItems={deleteItems} key={item.id} />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }) {
+function Item({ item, deleteItems }) {
   return (
     <li>
       <span>
         {item.quantity} {item.description}
       </span>
-      <button>❌</button>
+      <button onClick={() => deleteItems(item.id)}>❌</button>
     </li>
   );
 }
