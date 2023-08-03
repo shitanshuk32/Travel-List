@@ -130,8 +130,8 @@ ul {
   width: 80%;
 
   /* Remove horizontal scrollbar */
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
