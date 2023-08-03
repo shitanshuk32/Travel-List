@@ -1,10 +1,10 @@
 # 🏝️ Far Away 🧳 ( Travel List App )
 
+<img width="800" alt="Screenshot 2023-07-22 195150" src="https://github.com/shitanshuk32/Travel-List/assets/86796224/b5f334b5-0c9e-4d91-ba4b-7c6afff3eeae">
+
+## Overview
+
 This is a simple React application that allows you to create a packing list for your trips. You can add items, mark them as packed, delete items, and sort the list based on different criteria.
-
-![final_ss](https://github.com/shitanshuk32/Travel-List/assets/86796224/b5f334b5-0c9e-4d91-ba4b-7c6afff3eeae)
-
-
 
 ## How to Use
 
