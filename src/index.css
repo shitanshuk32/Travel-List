@@ -70,10 +70,6 @@ input {
   background-color: #76c7ad;
 }
 
-ul {
-  overflow: hidden;
-}
-
 .list {
   background-color: #5a3e2b;
   color: #ffebb3;
@@ -84,24 +80,6 @@ ul {
   flex-direction: column;
   gap: 3.2rem;
   align-items: center;
-
-  /* Remove vertical scrollbar */
-  overflow-y: hidden;
-}
-
-.list ul {
-  list-style: none;
-  width: 80%;
-
-  /* Remove horizontal scrollbar */
-  overflow-x: hidden;
-  overflow-y: scroll; /* Enable vertical scrolling */
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.2rem;
-  justify-content: center;
-  align-content: start;
 }
 
 .actions button,
@@ -113,25 +91,10 @@ ul {
   margin: 0 0.8rem;
 }
 
-.list {
-  background-color: #5a3e2b;
-  color: #ffebb3;
-  padding: 4rem 0;
-
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  gap: 3.2rem;
-  align-items: center;
-}
-
 .list ul {
   list-style: none;
   width: 80%;
-
-  /* Remove horizontal scrollbar */
-  /* overflow-x: hidden;
-  overflow-y: hidden; */
+  overflow: scroll;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
